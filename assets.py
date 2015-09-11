@@ -1,3 +1,6 @@
+import subprocess
+
+
 BLOCKS = {
     'A': """
           .----------------.
@@ -483,3 +486,37 @@ X = """
  )  (
 (_/\_)
 """
+
+PHRASES = {
+    'correct': [
+        'That is right!',
+        'Correct!',
+        'Good Job!'
+    ],
+    'wrong': [
+        'That is not right.',
+        'Try again.',
+        'Whoops!'
+    ],
+    'letter': [
+        'Can you find the {} {}?',
+        'Press the {} {} key!'
+    ],
+    'pressed': [
+        'You pressed the {} key.',
+    ],
+}
+
+
+def get_system_voices():
+    output = subprocess.check_output("say -v '?'", shell=True, universal_newlines=True)
+    data = output.split('\n')
+    voices = []
+    for datum in data:
+        voice = datum.split()
+        if voice and voice[1] in ['en_US', 'en_GB']:
+            voices.append(voice[0])
+    return voices
+
+
+VOICES = get_system_voices()
