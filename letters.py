@@ -50,7 +50,7 @@ def main():
             guess = get_input(prompt())
             correct = check_input(guess, letter)
         time.sleep(3)
-        _ = subprocess.call('clear', shell=True)
+        subprocess.call('clear', shell=True)
 
 
 if __name__ == '__main__':
