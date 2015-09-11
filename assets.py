@@ -500,7 +500,7 @@ PHRASES = {
     ],
     'letter': [
         'Can you find the {} {}?',
-        'Press the {} {} key!'
+        'Press the {} {}!'
     ],
     'pressed': [
         'You pressed the {} key.',
