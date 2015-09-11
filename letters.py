@@ -1,13 +1,19 @@
 import random
 import subprocess
-import time
+import sys
+# import time
 
 import assets
 from color import Colorize
+from read_char import ReadChar
 
 
 def get_input(prompt):
-    return input(prompt).upper()
+    with ReadChar() as rc:
+        char = rc.upper()
+        if char in ['\x03']:
+            sys.exit()
+        return char
 
 
 def check_input(guess, letter):
@@ -74,17 +80,23 @@ def prompt():
     return '\nEnter the character :>>> '
 
 
+def interact(letter):
+    execute_shell_command('clear')
+    display_letter(letter)
+    say_letter(letter)
+
+
 def main():
     while True:
         letter = get_letter()
-        display_letter(letter)
-        say_letter(letter)
+        interact(letter)
         correct = False
         while not correct:
             guess = get_input(prompt())
             correct = check_input(guess, letter)
-        time.sleep(3)
-        execute_shell_command('clear')
+            # time.sleep(3)
+            if not correct:
+                interact(letter)
 
 
 if __name__ == '__main__':
