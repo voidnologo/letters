@@ -1,7 +1,7 @@
 import random
 import subprocess
 import sys
-# import time
+import time
 
 import assets
 from color import Colorize
@@ -87,6 +87,8 @@ def interact(letter):
 
 
 def main():
+    print(get_phrase('exit'))
+    time.sleep(3)
     while True:
         letter = get_letter()
         interact(letter)
@@ -94,7 +96,6 @@ def main():
         while not correct:
             guess = get_input(prompt())
             correct = check_input(guess, letter)
-            # time.sleep(3)
             if not correct:
                 interact(letter)
 

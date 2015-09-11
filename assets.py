@@ -505,6 +505,9 @@ PHRASES = {
     'pressed': [
         'You pressed the {} key.',
     ],
+    'exit': [
+        'Use "<control>-c" to exit'
+    ]
 }
 
 
