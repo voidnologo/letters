@@ -8,6 +8,9 @@ from color import Colorize
 from read_char import ReadChar
 
 
+VOICES = assets.get_system_voices()
+
+
 def get_input(prompt):
     with ReadChar() as rc:
         char = rc.upper()
@@ -47,7 +50,7 @@ def get_phrase(key):
 
 
 def get_random_voice():
-    return random.choice(assets.VOICES)
+    return random.choice(VOICES)
 
 
 def say_phrase(sentence, voice):
@@ -91,13 +94,11 @@ def main():
     time.sleep(3)
     while True:
         letter = get_letter()
-        interact(letter)
         correct = False
         while not correct:
+            interact(letter)
             guess = get_input(prompt())
             correct = check_input(guess, letter)
-            if not correct:
-                interact(letter)
 
 
 if __name__ == '__main__':
