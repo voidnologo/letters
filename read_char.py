@@ -1,3 +1,6 @@
+# -- coding: utf-8 --
+
+
 import tty
 import sys
 import termios

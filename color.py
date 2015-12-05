@@ -1,3 +1,6 @@
+# -- coding: utf-8 --
+
+
 class Colorize:
     """Color ANSI codes"""
     colors = {
